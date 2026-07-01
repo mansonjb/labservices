@@ -32,6 +32,7 @@ export function buildJsonLd() {
       name: `${BUSINESS.name} — ${l.city}`,
       address: {
         "@type": "PostalAddress",
+        ...(l.street ? { streetAddress: l.street } : {}),
         addressLocality: l.city,
         addressRegion: l.region,
         postalCode: l.postalCode,

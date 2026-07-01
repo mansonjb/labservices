@@ -59,6 +59,11 @@ export default function SiteFooter() {
               </li>
             ))}
             <li>
+              <a href="/villes" className="text-sm text-mist transition hover:text-white">
+                Zones d&apos;intervention
+              </a>
+            </li>
+            <li>
               <a href="#devis" className="text-sm font-semibold text-red-2 transition hover:text-white">
                 Demande de devis
               </a>

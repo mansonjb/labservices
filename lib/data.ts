@@ -19,23 +19,25 @@ export const BUSINESS = {
   baseline:
     "L'agence qui conçoit, produit et livre vos événements de A à Z — de la première esquisse 3D au dernier boulon démonté.",
   url: "https://www.lab-services.org",
-  email: "contact@lab-services.org", // ⚠️ à confirmer
-  phone: "+33243000000", // ⚠️ PLACEHOLDER — remplacer par le vrai numéro
-  phoneDisplay: "02 43 00 00 00", // ⚠️ PLACEHOLDER
+  email: "contact@lab-services.org", // ⚠️ à confirmer (aucun e-mail public trouvé, contact via formulaire)
+  phone: "+33272883420", // ligne principale réelle (source : lab-services.org/equipe)
+  phoneDisplay: "02 72 88 34 20",
   locations: [
     {
       city: "Le Mans",
+      street: "Parc des 24 Heures", // siège légal réel (RCS Le Mans)
       region: "Pays de la Loire",
       postalCode: "72000",
       country: "FR",
-      note: "Au cœur du circuit des 24 Heures du Mans",
+      note: "Siège — au cœur du circuit des 24 Heures du Mans",
       lat: 47.9503,
       lng: 0.2076,
     },
     {
       city: "Paris",
+      street: "", // ⚠️ adresse exacte à confirmer
       region: "Île-de-France",
-      postalCode: "75000",
+      postalCode: "75008",
       country: "FR",
       note: "Antenne opérationnelle Île-de-France",
       lat: 48.8566,
