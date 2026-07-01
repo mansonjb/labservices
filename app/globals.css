@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #121212;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-2: #222222;
+  --color-graphite: #2c2c2c;
+  --color-line: #343434;
+  --color-red: #e00028;
+  --color-red-2: #ff2a4d;
+  --color-paper: #f7f4ef;
+  --color-mist: #b7b7b7;
+
+  --font-display: var(--font-montserrat);
+  --font-body: var(--font-inter);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-glow: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: .5; }
+  50%      { opacity: 1; }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-ink);
+    color: #ededed;
+    font-family: var(--font-body), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-red); color: #fff; }
+  h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.02em; }
+}
+
+@layer components {
+  .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: var(--font-display), sans-serif;
+    font-size: .72rem; font-weight: 800; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--color-red-2);
+  }
+  .eyebrow::before { content: ""; width: 1.7rem; height: 2px; background: var(--color-red); }
+
+  .btn-red {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    background: var(--color-red); color: #fff;
+    font-family: var(--font-display), sans-serif; font-weight: 700; font-size: 1rem;
+    padding: .95rem 1.7rem; border-radius: .7rem; line-height: 1; text-align: center;
+    box-shadow: 0 10px 30px -10px rgba(224,0,40,.7);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-red:hover { transform: translateY(-2px); background: #f50a34; box-shadow: 0 18px 44px -12px rgba(224,0,40,.85); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    background: rgba(255,255,255,.04); color: #fff;
+    border: 1px solid rgba(255,255,255,.18);
+    font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 1rem;
+    padding: .95rem 1.7rem; border-radius: .7rem; line-height: 1; text-align: center;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--color-red); background: rgba(224,0,40,.1); transform: translateY(-2px); }
+
+  .card {
+    background: linear-gradient(160deg, #1e1e1e, #171717);
+    border: 1px solid var(--color-line);
+    border-radius: 1.1rem;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(224,0,40,.55); box-shadow: 0 24px 50px -24px rgba(224,0,40,.4); }
+}
+
+/* decorative helpers */
+.blueprint {
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+.red-glow { background: radial-gradient(circle at center, rgba(224,0,40,.30), transparent 62%); }
+.text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, #ffd9df 52%, var(--color-red-2) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.mask-x { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-marquee { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Sans JavaScript : tout le contenu reste visible. */
+@media (scripting: none) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
