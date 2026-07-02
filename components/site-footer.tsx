@@ -64,6 +64,11 @@ export default function SiteFooter() {
               </a>
             </li>
             <li>
+              <a href="/prix-stand-salon" className="text-sm text-mist transition hover:text-white">
+                Prix d&apos;un stand de salon
+              </a>
+            </li>
+            <li>
               <a href="#devis" className="text-sm font-semibold text-red-2 transition hover:text-white">
                 Demande de devis
               </a>

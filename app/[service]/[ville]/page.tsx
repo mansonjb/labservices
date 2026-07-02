@@ -4,7 +4,7 @@ import Link from "next/link";
 import Reveal from "@/components/reveal";
 import DevisForm from "@/components/devis-form";
 import { BUSINESS } from "@/lib/data";
-import { CITIES, PSERVICES, findCity, findService, allCombos } from "@/lib/programmatic";
+import { CITIES, PSERVICES, VENUE_DETAIL, findCity, findService, allCombos } from "@/lib/programmatic";
 
 export const dynamicParams = false;
 
@@ -36,14 +36,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const s = findService(service);
   const c = findCity(ville);
   if (!s || !c) return {};
-  const title = `${s.label} ${c.prep} — LAB Services`;
+  const title = `${s.label} ${c.prep}`;
   const description = `${s.label} ${c.prep} : ${s.short} clé en main par LAB Services, de la conception 3D au démontage. Intervention sur ${c.venues[0]} et toute la région ${c.region}. Devis gratuit sous 24–48 h.`;
   const canonical = `/${service}/${ville}`;
   return {
     title,
     description,
     alternates: { canonical },
-    openGraph: { title, description, url: canonical, type: "website", locale: "fr_FR", siteName: "LAB Services" },
+    openGraph: { title: `${title} — LAB Services`, description, url: canonical, type: "website", locale: "fr_FR", siteName: "LAB Services" },
   };
 }
 
@@ -160,6 +160,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                   <li key={v} className="rounded-full border border-line px-3 py-1.5 text-sm text-mist">{v}</li>
                 ))}
               </ul>
+              {VENUE_DETAIL[c.slug] && (
+                <p className="mt-5 text-sm leading-relaxed text-mist">{VENUE_DETAIL[c.slug]}</p>
+              )}
               {c.sport && (
                 <p className="mt-5 text-sm leading-relaxed text-mist">
                   Ancrage sportif local : <span className="text-white">{c.sport}</span>. Notre expertise hospitality née aux 24 Heures du Mans s'applique à tous les grands rendez-vous sportifs {c.prep}.

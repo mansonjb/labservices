@@ -2,8 +2,9 @@ import { BUSINESS, SERVICES, FAQ } from "./data";
 
 // Construit le graphe JSON-LD (schema.org) — optimisé Google + moteurs IA (GEO).
 export function buildJsonLd() {
+  // Entité : Organization (ProfessionalService est déprécié par schema.org).
   const org = {
-    "@type": ["Organization", "ProfessionalService"],
+    "@type": "Organization",
     "@id": `${BUSINESS.url}/#organization`,
     name: BUSINESS.name,
     legalName: BUSINESS.legalName,
@@ -77,8 +78,29 @@ export function buildJsonLd() {
     })),
   };
 
+  // LocalBusiness par implantation physique (Le Mans + Paris).
+  const localBusinesses = BUSINESS.locations.map((l, i) => ({
+    "@type": "LocalBusiness",
+    "@id": `${BUSINESS.url}/#localbusiness-${i}`,
+    name: `${BUSINESS.name} — ${l.city}`,
+    parentOrganization: { "@id": `${BUSINESS.url}/#organization` },
+    url: BUSINESS.url,
+    telephone: BUSINESS.phone,
+    image: `${BUSINESS.url}/og.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      ...(l.street ? { streetAddress: l.street } : {}),
+      addressLocality: l.city,
+      addressRegion: l.region,
+      postalCode: l.postalCode,
+      addressCountry: l.country,
+    },
+    geo: { "@type": "GeoCoordinates", latitude: l.lat, longitude: l.lng },
+    areaServed: BUSINESS.areaServed.map((name) => ({ "@type": "Place", name })),
+  }));
+
   return {
     "@context": "https://schema.org",
-    "@graph": [org, website, services, faqPage],
+    "@graph": [org, ...localBusinesses, website, services, faqPage],
   };
 }

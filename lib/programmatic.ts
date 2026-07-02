@@ -120,7 +120,60 @@ export const CITIES: City[] = [
     sport: "Rhénus Sport",
     nearby: ["lille", "lyon"],
   },
+  {
+    slug: "toulouse",
+    name: "Toulouse",
+    prep: "à Toulouse",
+    region: "Occitanie",
+    dept: "31",
+    venues: ["MEETT — Parc des Expositions de Toulouse", "Centre de Congrès Pierre Baudis", "Zénith de Toulouse"],
+    angle:
+      "Capitale de l'aéronautique, Toulouse s'est dotée du MEETT, l'un des parcs d'exposition les plus modernes de France, qui attire salons industriels, tech et grand public dans tout le Grand Sud.",
+    sport: "Stadium de Toulouse",
+    nearby: ["bordeaux", "marseille"],
+  },
+  {
+    slug: "nice",
+    name: "Nice",
+    prep: "à Nice",
+    region: "Provence-Alpes-Côte d'Azur",
+    dept: "06",
+    venues: ["Palais des Expositions de Nice", "Nice Acropolis", "Allianz Riviera"],
+    angle:
+      "Porte de la Côte d'Azur et deuxième destination congrès de France, Nice conjugue cadre premium et infrastructures réceptives pour les événements corporate et internationaux.",
+    sport: "Allianz Riviera",
+    nearby: ["marseille", "cannes"],
+  },
+  {
+    slug: "cannes",
+    name: "Cannes",
+    prep: "à Cannes",
+    region: "Provence-Alpes-Côte d'Azur",
+    dept: "06",
+    venues: ["Palais des Festivals et des Congrès de Cannes", "Espace Riviera"],
+    angle:
+      "Capitale mondiale des grands rendez-vous (Festival, MIPIM, Cannes Lions), Cannes est l'adresse événementielle la plus prestigieuse de France : un niveau d'exigence où la logistique ne tolère aucune approximation.",
+    sport: "Circuit du Castellet (Paul Ricard) à proximité",
+    nearby: ["nice", "marseille"],
+  },
 ];
+
+// Donnée factuelle unique par ville (surfaces réelles des parcs d'expo).
+// Injectée dans chaque page pour garantir un contenu non-dupliqué (anti-pénalité doorway).
+export const VENUE_DETAIL: Record<string, string> = {
+  paris:
+    "Paris Nord Villepinte (≈ 246 000 m², le plus grand parc d'exposition de France) et Paris Expo Porte de Versailles (≈ 202 000 m²) concentrent les plus grands salons du pays, aux côtés du Palais des Congrès et de Paris Le Bourget.",
+  lyon: "Eurexpo Lyon développe ≈ 110 000 m² de surfaces couvertes : 3e parc d'exposition français, il accueille des salons professionnels de dimension internationale.",
+  bordeaux: "Le Parc des Expositions de Bordeaux (≈ 90 000 m²) figure parmi les plus grands de France, complété par le Palais 2 l'Atlantique et le Bordeaux Convention Center.",
+  lille: "Lille Grand Palais réunit espaces d'exposition et centre de congrès au cœur de la métropole, à la croisée de Paris, Bruxelles et Londres.",
+  "le-mans": "Le Circuit des 24 Heures du Mans et le Centre des Congrès accueillent chaque année des rendez-vous d'envergure mondiale — un terrain que nous connaissons mieux que quiconque.",
+  nantes: "Exponantes (Parc des Expositions de la Beaujoire) et La Cité des Congrès de Nantes structurent l'événementiel professionnel du Grand Ouest.",
+  marseille: "Le Parc Chanot (≈ 95 000 m²) et le Palais des Congrès accueillent congrès internationaux et grands salons sur la première façade méditerranéenne de France.",
+  strasbourg: "Le nouveau Parc des Expositions du Wacken et le Palais de la Musique et des Congrès placent Strasbourg sur la carte de l'événementiel européen et transfrontalier.",
+  toulouse: "Le MEETT (≈ 100 000 m²), ouvert en 2020 et signé Rem Koolhaas, est l'un des parcs d'exposition les plus modernes de France.",
+  nice: "Le Palais des Expositions et Nice Acropolis font de Nice la 2e destination congrès de France, dans un cadre Côte d'Azur premium.",
+  cannes: "Le Palais des Festivals et des Congrès de Cannes est l'une des adresses événementielles les plus prestigieuses au monde (Festival de Cannes, MIPIM, Cannes Lions).",
+};
 
 export const PSERVICES: PService[] = [
   {
